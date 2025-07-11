@@ -5,12 +5,16 @@ function fn(){
     if(!env){
         env = 'dev';
     }
+
+    var encryptionUtils = Java.type('utils.EncryptionUtils');
+
     var config = {
         baseUrl: 'https://conduit-api.bondaracademy.com/api/'
     };
     if (env == 'dev') {
         config.userEmail = 'cinnamon@karate.testing';
-        config.userPwd = 'karate.testing';
+        config.encodedPwd = "a2FyYXRlLnRlc3Rpbmc=";
+        config.userPwd = encryptionUtils.decrypt(config.encodedPwd);
     }
     if (env == 'qa') {
         //customize

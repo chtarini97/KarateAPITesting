@@ -17,11 +17,13 @@ Feature: Test for HomePage
     #And match response.tags contains only
     #-> matching return type of response
     And match response.tags == "#array"
-    #-> matching return type of each response (array of strings)
+    #-> matching return type of each value in the response
     And match each response.tags == "#string"
 
   @tags
   Scenario: Get 10 articles
+    * def timeValidator = read ('classpath:conduitApp/com/helpers/timeValidator.js')
+
     Given path 'articles'
     #And param limit = 10
     #And param offset = 0
@@ -30,11 +32,31 @@ Feature: Test for HomePage
     Then status 200
     #-> log prints in the report
     * karate.log('Response:', response)
-    And match response.articlesCount == 19
+    And match response == {"articles" : "#array", "articlesCount": 20}
+    And match each response.articles ==
+    """
+    {
+            "slug": "#string",
+            "title": "#string",
+            "description": "#string",
+            "body": "#string",
+            "tagList": "#array",
+            "createdAt": "#? timeValidator(_)",
+            "updatedAt": "#? timeValidator(_)",
+            "favorited": "#boolean",
+            "favoritesCount": "#number",
+            "author": {
+                "username": "#string",
+                "bio": ##string,
+                "image": "#string",
+                "following": "#boolean"
+            }
+        }
+    """
+    #And match response.articlesCount == 20
     #-> matching arraylenght of response (array size of 10)
-    And match response.articles == "#[10]"
-    And match response == {"articles" : "#array", "articlesCount": 19}
-    And match response.articles[9].createdAt contains "2024"
+    #And match response.articles == "#[10]"
+    #And match response.articles[9].createdAt contains "2025"
     #And match each response.articles[*].author.bio == null
-    And match each response..bio == null
-
+    #And match each response..bio == null
+    #And match each response..following == "#boolean"

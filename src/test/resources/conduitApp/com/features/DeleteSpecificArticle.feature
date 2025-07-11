@@ -5,7 +5,7 @@ Feature: Deleting articles
     * url baseUrl
 
   Scenario: Deleting a specific article
-    Given path '/articles/testing-again4-28334'
+    Given path '/articles/testing-again19-28334'
     When method DELETE
     Then status 204
 
@@ -17,9 +17,9 @@ Feature: Deleting articles
     Then status 200
     * def slugs = get response.articles[*].slug
     * karate.log('List of articles', slugs)
-    * match slugs !contains 'Testing-again4-28334'
+    * match slugs !contains 'Testing-again19-28334'
 
   Scenario: Ensure deleted article is not accessible
-    Given path '/articles/testing-again4-28334'
+    Given path '/articles/testing-again19-28334'
     When method Get
     Then status 404
