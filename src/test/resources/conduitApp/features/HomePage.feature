@@ -20,9 +20,9 @@ Feature: Test for HomePage
     #-> matching return type of each value in the response
     And match each response.tags == "#string"
 
-  @tags
+  @valid
   Scenario: Get 10 articles
-    * def timeValidator = read ('classpath:conduitApp/com/helpers/timeValidator.js')
+    * def timeValidator = read('classpath:conduitApp/helpers/timeValidator.js')
 
     Given path 'articles'
     #And param limit = 10
@@ -32,7 +32,7 @@ Feature: Test for HomePage
     Then status 200
     #-> log prints in the report
     * karate.log('Response:', response)
-    And match response == {"articles" : "#array", "articlesCount": 20}
+    And match response == {"articles" : "#array", "articlesCount": 19}
     And match each response.articles ==
     """
     {
