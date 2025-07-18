@@ -13,6 +13,7 @@ function fn(){
     };
     if (env == 'dev') {
         config.userEmail = 'cinnamon@karate.testing';
+        config.userName = 'Cinnamon'
         config.encodedPwd = "a2FyYXRlLnRlc3Rpbmc=";
         config.userPwd = encryptionUtils.decrypt(config.encodedPwd);
     }

@@ -18,7 +18,7 @@ public class ConduitTestRunner {
     @Test
     void parallelTest(){
         Results results = Runner.path("classpath:conduitApp/features")
-                .tags("@negative")
+                .tags("@favorites")
                 .configDir("classpath:")
                 .parallel(1);
 
