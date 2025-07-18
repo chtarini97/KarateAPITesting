@@ -1,0 +1,8 @@
+{
+  "article": {
+    "title": "Testing again2",
+    "description": "Learning Karate",
+    "body": "It's awesome",
+    "tagList": ["karate", "api", "testing"]
+  }
+}
