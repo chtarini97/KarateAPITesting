@@ -11,19 +11,19 @@ Karate API automation suite for the Conduit sample app (CRUD flows). Tests are o
 5. karate-config.js for environment config & auth header wiring (token)
  
 # Prerequisites
-JDK 17+
-Maven 3.8+
-Git
+- JDK 17+
+- Maven 3.8+
+- Git
 
 # Verify:
-java -version
-mvn -version
-git --version
+- java -version
+- mvn -version
+- git --version
 
-Setup
-# Clone
-git clone https://github.com/chtarini97/KarateAPITesting.git
-cd KarateAPITesting
+# Setup
+Clone
+1. git clone https://github.com/chtarini97/KarateAPITesting.git
+2. cd KarateAPITesting
 
 # How to run tests
 1. Run via JUnit Runner (IDE):
@@ -35,7 +35,7 @@ cd KarateAPITesting
 JavaFaker generates random emails/usernames to avoid collisions. 
 
 # Reports
-Karate auto-generates:
+Karate auto-generates: (Open the HTML in a browser after a run) 
 - target/karate-reports/karate-summary.html (aggregate)
 - target/karate-reports/*/karate*.html (per feature)
-Open the HTML in a browser after a run.
+
