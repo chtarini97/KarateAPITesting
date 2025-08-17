@@ -1,12 +1,41 @@
 # KarateAPITesting
 
-Setup - 
-1. Install maven, jdk and git onto your machine
+# Overview
+Karate API automation suite for the Conduit sample app (CRUD flows). Tests are organized into feature files with Java helpers and a JUnit runner.
 
-Runner - 
-1. To test the application - paste the desired tag from the feature files in the ConduitTestRunner to run different CRUD operations.
+# Tech stack
+1. Karate for API testing & assertions
+2. JUnit runner
+3. Java utilities (e.g., encryption, data generation)
+4. JavaFaker for random test data
+5. karate-config.js for environment config & auth header wiring (token)
+ 
+# Prerequisites
+JDK 17+
+Maven 3.8+
+Git
 
-Practices - 
-1. Password is encrypted using encryptor in Utils folder
-2. karate-config file contains the base url, login credentials and auth token for cleaner code
-3. Java Faker library is used to generate random emails and usernames
+# Verify:
+java -version
+mvn -version
+git --version
+
+Setup
+# Clone
+git clone https://github.com/chtarini97/KarateAPITesting.git
+cd KarateAPITesting
+
+# How to run tests
+1. Run via JUnit Runner (IDE):
+   - Open ConduitTestRunner and:
+   - Change the @Karate.Test or Runner.path()/tags() to the feature or tag you want.
+   - Right-click → Run.
+
+# Test data
+JavaFaker generates random emails/usernames to avoid collisions. 
+
+# Reports
+Karate auto-generates:
+- target/karate-reports/karate-summary.html (aggregate)
+- target/karate-reports/*/karate*.html (per feature)
+Open the HTML in a browser after a run.
